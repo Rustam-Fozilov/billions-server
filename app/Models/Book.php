@@ -20,5 +20,6 @@ class Book extends Model
         'cover_type',
         'book_language',
         'book_year',
+        'keywords',
     ];
 }

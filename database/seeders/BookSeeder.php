@@ -27,6 +27,7 @@ class BookSeeder extends Seeder
             'cover_type' => 'Paperback',
             'book_language' => 'English',
             'book_year' => '1988',
+            'keywords' => 'the alchemist, paulo coelho, novel, 1988'
 
         ]);
 
@@ -41,6 +42,7 @@ class BookSeeder extends Seeder
             'cover_type' => 'Paperback',
             'book_language' => 'English',
             'book_year' => '1998',
+            'keywords' => 'the kite runner, khaled hosseini, novel, 1998'
         ]);
 
         Book::create([
@@ -54,6 +56,7 @@ class BookSeeder extends Seeder
             'cover_type' => 'Paperback',
             'book_language' => 'English',
             'book_year' => '1998',
+            'keywords' => 'the great gatsby, f. scott fitzgerald, novel, 1998'
         ]);
 
         Book::create([
@@ -67,6 +70,7 @@ class BookSeeder extends Seeder
             'cover_type' => 'Paperback',
             'book_language' => 'English',
             'book_year' => '1998',
+            'keywords' => 'the lord of the rings, j. r. r. tolkien, novel, 1998'
         ]);
 
         Book::create([
@@ -80,6 +84,7 @@ class BookSeeder extends Seeder
             'cover_type' => 'Paperback',
             'book_language' => 'English',
             'book_year' => '1998',
+            'keywords' => 'the da vinci code, dan brown, novel, 1998'
         ]);
     }
 }

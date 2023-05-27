@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,4 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::post('login', [App\Http\Controllers\API\LoginController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);

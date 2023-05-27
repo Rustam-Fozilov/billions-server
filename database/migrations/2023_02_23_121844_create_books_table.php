@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string("cover_type");
             $table->string("book_language");
             $table->string("book_year");
+            $table->string("keywords");
             $table->timestamps();
 
             $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade");
