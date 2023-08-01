@@ -11,7 +11,7 @@ class BookController extends Controller
 
     public function index()
     {
-        //
+        return response(Book::with('stocks')->get());
     }
 
 
@@ -27,9 +27,9 @@ class BookController extends Controller
     }
 
 
-    public function show(Book $book)
+    public function show($id)
     {
-        //
+        return response(Book::with('stocks')->find($id));
     }
 
 
