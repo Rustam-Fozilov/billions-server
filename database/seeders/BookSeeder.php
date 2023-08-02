@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Book;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder
@@ -19,6 +18,58 @@ class BookSeeder extends Seeder
             $book->stocks()->create([
                 'quantity' => rand(1, 10),
                 'attributes' => json_encode([
+                    [
+                        'attribute_id' => 1,
+                        'value_id' => rand(1, 2),
+                    ],
+                    [
+                        'attribute_id' => 2,
+                        'value_id' => rand(3, 4),
+                    ],
+                    [
+                        'attribute_id' => 3,
+                        'value_id' => rand(5, 6),
+                    ],
+                    [
+                        'attribute_id' => 4,
+                        'value_id' => rand(7, 9),
+                    ]
+                ])
+            ]);
+
+            $book->stocks()->create([
+                'quantity' => rand(1, 10),
+                'attributes' => json_encode([
+                    [
+                        'attribute_id' => 1,
+                        'value_id' => rand(1, 2),
+                    ],
+                    [
+                        'attribute_id' => 2,
+                        'value_id' => rand(3, 4),
+                    ],
+                    [
+                        'attribute_id' => 3,
+                        'value_id' => rand(5, 6),
+                    ],
+                    [
+                        'attribute_id' => 4,
+                        'value_id' => rand(7, 9),
+                    ]
+                ])
+            ]);
+
+            $book->stocks()->create([
+                'quantity' => rand(1, 10),
+                'attributes' => json_encode([
+                    [
+                        'attribute_id' => 1,
+                        'value_id' => rand(1, 2),
+                    ],
+                    [
+                        'attribute_id' => 2,
+                        'value_id' => rand(3, 4),
+                    ],
                     [
                         'attribute_id' => 3,
                         'value_id' => rand(5, 6),
