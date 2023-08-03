@@ -38,4 +38,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    public function favorites(): BelongsToMany
+    {
+        return $this->belongsToMany(Book::class, 'favorite_user');
+    }
+
+    public function hasFavorite($favorite_id): bool
+    {
+        return $this->favorites->contains($favorite_id);
+    }
 }
