@@ -18,10 +18,10 @@ class BookResource extends JsonResource
             'id' => $this->id,
             'name' => $this->getTranslations('name'),
             'price' => $this->price,
-            'author' => $this->author->name,
-            'inventory' => StockResource::collection($this->stocks),
+            'author' => $this->author->first_name . ' ' . $this->author->last_name,
             'category' => new CategoryResource($this->category),
             'description' => $this->getTranslations('description'),
+            'inventory' => StockResource::collection($this->stocks),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

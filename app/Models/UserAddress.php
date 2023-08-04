@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Order extends Model
+class UserAddress extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'comment',
-        'delivery_method_id',
-        'payment_type_id',
-        'sum',
-        'products',
-        'address',
+        'latitude',
+        'longitude',
+        'region',
+        'street',
+        'district',
+        'house',
     ];
 
     public function user(): BelongsTo

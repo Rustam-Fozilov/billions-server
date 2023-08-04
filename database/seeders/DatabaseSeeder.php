@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             AttributeSeeder::class,
             ValueSeeder::class,
             BookSeeder::class,
+            DeliveryMethodSeeder::class,
+            PaymentTypeSeeder::class,
         ]);
     }
 }

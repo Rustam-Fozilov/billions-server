@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,8 @@ Route::get('user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 
 Route::apiResources([
     'categories' => CategoryController::class,
-    'books' => BookController::class,
     'categories.books' => CategoryBookController::class,
-    'favorites' => FavoritesController::class
+    'favorites' => FavoritesController::class,
+    'books' => BookController::class,
+    'orders' => OrderController::class,
 ]);

@@ -13,9 +13,9 @@ class AttributeSeeder extends Seeder
      */
     public function run(): void
     {
-        Attribute::create(['name' => 'number of pages']);
+        Attribute::create(['name' => 'number_of_pages']);
         Attribute::create(['name' => 'year']);
-        Attribute::create(['name' => 'cover type']);
+        Attribute::create(['name' => 'cover_type']);
         Attribute::create(['name' => 'language']);
     }
 }
