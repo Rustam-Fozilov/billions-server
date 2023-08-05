@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_addresses', function (Blueprint $table) {
+        Schema::create('user_payment_cards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
-            $table->text('region');
-            $table->text('street');
-            $table->text('district');
-            $table->text('house')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_addresses');
+        Schema::dropIfExists('user_payment_cards');
     }
 };

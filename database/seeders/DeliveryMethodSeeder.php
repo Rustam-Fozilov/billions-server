@@ -17,7 +17,10 @@ class DeliveryMethodSeeder extends Seeder
                 'uz' => 'Tekin',
                 'ru' => 'Бесплатно',
             ],
-            'estimated_time' => 30,
+            'estimated_time' => [
+                'uz' => '30 daqiqa',
+                'ru' => '30 минут',
+            ],
             'sum' => 100,
         ]);
 
