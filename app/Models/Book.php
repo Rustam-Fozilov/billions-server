@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
 class Book extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory, HasTranslations, SoftDeletes;
 
     protected $fillable = ['category_id', 'author_id', 'name', 'price', 'description'];
 
@@ -30,6 +31,12 @@ class Book extends Model
     public function stocks(): HasMany
     {
         return $this->hasMany(Stock::class);
+    }
+
+    public function withStock($stockId): static
+    {
+        $this->stocks = [$this->stocks()->findOrFail($stockId)];
+        return $this;
     }
 
     public function users(): BelongsToMany

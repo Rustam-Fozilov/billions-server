@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserAddressSeeder extends Seeder
@@ -12,6 +12,13 @@ class UserAddressSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        User::find(2)->addresses()->create([
+            "latitude" => "latitude 2",
+            "longitude" => "longitude 2",
+            "region" => "Tashkent city 2",
+            "street" => "Diydor 2",
+            "district" => "Chilonzor 2",
+            "house" => "252"
+        ]);
     }
 }

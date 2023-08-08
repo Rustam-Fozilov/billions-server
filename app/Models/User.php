@@ -50,13 +50,18 @@ class User extends Authenticatable
         return $this->hasMany(UserAddress::class);
     }
 
-    public function hasFavorite($favorite_id): bool
+    public function orders(): HasMany
     {
-        return $this->favorites->contains($favorite_id);
+        return $this->hasMany(Order::class);
     }
 
     public function paymentCards(): HasMany
     {
         return $this->hasMany(UserPaymentCard::class);
+    }
+
+    public function hasFavorite($favorite_id): bool
+    {
+        return $this->favorites->contains($favorite_id);
     }
 }

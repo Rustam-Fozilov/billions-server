@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('payment_type_id')->constrained();
             $table->unsignedBigInteger('sum');
             $table->text('address')->nullable();
-            $table->json('products');
+            $table->json('books');
             $table->timestamps();
         });
     }
