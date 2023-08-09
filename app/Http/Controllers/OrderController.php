@@ -9,9 +9,7 @@ use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Stock;
-use http\Env\Response;
 use Illuminate\Http\JsonResponse;
-use function PHPUnit\Framework\isEmpty;
 
 class OrderController extends Controller
 {
@@ -72,6 +70,7 @@ class OrderController extends Controller
                 'address' => $address,
                 'books' => $books,
                 'sum' => $sum,
+                'status_id' => in_array($request['payment_type_id'], [1, 2]) ? 1 : 10,
             ]);
 
             if ($order) {

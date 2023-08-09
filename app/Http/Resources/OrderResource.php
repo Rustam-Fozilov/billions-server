@@ -24,6 +24,7 @@ class OrderResource extends JsonResource
             'sum' => $this->sum,
             'books' => $this->books,
             'address' => $this->address,
+            'status' => $this->status,
         ];
     }
 }

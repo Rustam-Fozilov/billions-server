@@ -8,6 +8,8 @@ use App\Http\Controllers\DeliveryMethodController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentTypeController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\StatusOrderController;
 use App\Http\Controllers\UserAddressController;
 use App\Http\Controllers\UserPaymentCardController;
 use Illuminate\Http\Request;
@@ -22,6 +24,8 @@ Route::get('user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 Route::apiResources([
     'categories' => CategoryController::class,
     'categories.books' => CategoryBookController::class,
+    'statuses' => StatusController::class,
+    'statuses.orders' => StatusOrderController::class,
     'favorites' => FavoritesController::class,
     'books' => BookController::class,
     'orders' => OrderController::class,

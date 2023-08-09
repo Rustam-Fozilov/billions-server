@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('sum');
             $table->text('address')->nullable();
             $table->json('books');
+            $table->foreignId('status_id')->default(1)->constrained();
             $table->timestamps();
         });
     }
