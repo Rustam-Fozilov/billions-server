@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->favorites->contains($favorite_id);
     }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
 }

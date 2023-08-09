@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookReviewController;
 use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DeliveryMethodController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentTypeController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\StatusOrderController;
 use App\Http\Controllers\UserAddressController;
@@ -33,4 +35,6 @@ Route::apiResources([
     'payment-types' => PaymentTypeController::class,
     'user-addresses' => UserAddressController::class,
     'user-payment-cards' => UserPaymentCardController::class,
+    'reviews' => ReviewController::class,
+    'books.reviews' => BookReviewController::class,
 ]);
