@@ -10,11 +10,12 @@ use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\StatusOrderController;
 use App\Http\Controllers\UserAddressController;
 use App\Http\Controllers\UserPaymentCardController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\UserSettingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -37,4 +38,6 @@ Route::apiResources([
     'user-payment-cards' => UserPaymentCardController::class,
     'reviews' => ReviewController::class,
     'books.reviews' => BookReviewController::class,
+    'settings' => SettingController::class,
+    'user-settings' => UserSettingController::class,
 ]);

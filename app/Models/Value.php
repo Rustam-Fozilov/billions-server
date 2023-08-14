@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Spatie\Translatable\HasTranslations;
 
 class Value extends Model
@@ -15,8 +16,8 @@ class Value extends Model
 
     public array $translatable = ['name'];
 
-    public function attribute(): BelongsTo
+    public function valuable(): MorphTo
     {
-        return $this->belongsTo(Attribute::class);
+        return $this->morphTo();
     }
 }

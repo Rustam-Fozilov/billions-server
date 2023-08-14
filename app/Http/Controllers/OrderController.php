@@ -20,15 +20,15 @@ class OrderController extends Controller
 
     public function index(): JsonResponse
     {
-        return response()->json([
+        if (request()->has('status_id')) {
+            return $this->response(
+                OrderResource::collection(auth()->user()->orders()->where('status_id', request('status_id'))->paginate(10))
+            );
+        }
+
+        return $this->response(
             OrderResource::collection(auth()->user()->orders)
-        ]);
-    }
-
-
-    public function create()
-    {
-        //
+        );
     }
 
 
@@ -81,16 +81,12 @@ class OrderController extends Controller
                 }
             }
 
-            return response()->json([
-                'success' => true,
-            ]);
+            return $this->success('order created', $order);
 
         } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'some books not found',
+            return $this->error('some books not found', [
                 'not_found_books' => $notFoundBooks,
-                'found_books' => $books,
+                'found_books' => $books
             ]);
         }
     }
@@ -98,9 +94,9 @@ class OrderController extends Controller
 
     public function show(Order $order): JsonResponse
     {
-        return response()->json([
+        return $this->response(
             new OrderResource($order)
-        ]);
+        );
     }
 
 
