@@ -48,4 +48,9 @@ class Book extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function priceInCurrency(): BelongsTo
+    {
+        return $this->belongsTo(BookPriceInCurrency::class);
+    }
 }

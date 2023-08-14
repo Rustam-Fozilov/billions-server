@@ -35,7 +35,7 @@ Route::apiResources([
     'delivery-methods' => DeliveryMethodController::class,
     'payment-types' => PaymentTypeController::class,
     'user-addresses' => UserAddressController::class,
-    'user-payment-cards' => UserPaymentCardController::class,
+//    'user-payment-cards' => UserPaymentCardController::class,
     'reviews' => ReviewController::class,
     'books.reviews' => BookReviewController::class,
     'settings' => SettingController::class,

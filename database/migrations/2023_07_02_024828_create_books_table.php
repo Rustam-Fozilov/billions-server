@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->foreignId('author_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('price_in_currency_id')->constrained()->cascadeOnDelete();
             $table->text('name');
-            $table->integer('price');
             $table->text('description');
             $table->timestamps();
             $table->softDeletes();

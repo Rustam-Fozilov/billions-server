@@ -15,6 +15,10 @@ class BookSeeder extends Seeder
         $books = Book::factory(10)->create();
 
         foreach ($books as $book) {
+            $book->priceInCurrency()->create([
+                ''
+            ]);
+
             $book->stocks()->create([
                 'quantity' => rand(1, 10),
                 'attributes' => json_encode([
