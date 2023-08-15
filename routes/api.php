@@ -24,6 +24,8 @@ Route::post('logout', [AuthController::class, 'logout']);
 Route::post('register', [AuthController::class, 'register']);
 Route::get('user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 
+Route::get('books/{book}/related', [BookController::class, 'related']);
+
 Route::apiResources([
     'categories' => CategoryController::class,
     'categories.books' => CategoryBookController::class,
@@ -35,7 +37,6 @@ Route::apiResources([
     'delivery-methods' => DeliveryMethodController::class,
     'payment-types' => PaymentTypeController::class,
     'user-addresses' => UserAddressController::class,
-//    'user-payment-cards' => UserPaymentCardController::class,
     'reviews' => ReviewController::class,
     'books.reviews' => BookReviewController::class,
     'settings' => SettingController::class,

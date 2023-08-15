@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 
 class CategoryController extends Controller
 {
@@ -22,9 +24,11 @@ class CategoryController extends Controller
     }
 
 
-    public function show(Category $category)
+    public function show(Category $category): JsonResponse
     {
-        return $category;
+        return $this->response(
+            new CategoryResource($category)
+        );
     }
 
 

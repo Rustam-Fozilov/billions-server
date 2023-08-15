@@ -13,26 +13,66 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        Category::create([
+        $category = Category::create([
             'name' => [
                 'uz' => 'Biznes',
                 'ru' => 'Бизнес'
             ]
         ]);
+                $category->child_categories()->create([
+                    'name' => [
+                        'uz' => 'Startuplar',
+                        'ru' => 'Стартапы',
+                    ]
+                ]);
+                $category->child_categories()->create([
+                    'name' => [
+                        'uz' => 'Menejment',
+                        'ru' => 'Менеджмент',
+                    ]
+                ]);
 
-        Category::create([
+
+
+        $category = Category::create([
             'name' => [
                 'uz' => 'Marketing',
                 'ru' => 'Маркетинг'
             ]
         ]);
+                $category->child_categories()->create([
+                    'name' => [
+                        'uz' => 'Sotuvlar',
+                        'ru' => 'Продажи',
+                    ]
+                ]);
+                $category->child_categories()->create([
+                    'name' => [
+                        'uz' => 'Mijoz xizmatlari',
+                        'ru' => 'Клиентский сервис',
+                    ]
+                ]);
 
-        Category::create([
+
+
+        $category = Category::create([
             'name' => [
                 'uz' => 'Psixologiya',
                 'ru' => 'Психология'
             ]
         ]);
+                $category->child_categories()->create([
+                    'name' => [
+                        'uz' => 'Oilaviy psixologiya',
+                        'ru' => 'Семейная психология',
+                    ]
+                ]);
+                $category->child_categories()->create([
+                    'name' => [
+                        'uz' => 'Munosabatlar',
+                        'ru' => 'Отношения',
+                    ]
+                ]);
 
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Resources\BookResource;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use Illuminate\Http\JsonResponse;
 
 class BookController extends Controller
 {
@@ -49,5 +50,14 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         //
+    }
+
+    public function related(Book $book): JsonResponse
+    {
+        $books = Book::query()->where('category_id', $book->category_id)->limit(20)->get();
+
+        return $this->response(
+            BookResource::collection($books)
+        );
     }
 }
