@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBookPriceInCurrencyRequest extends FormRequest
+class StoreCurrencyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -5,20 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Translatable\HasTranslations;
 
-class BookPriceInCurrency extends Model
+class Currency extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     protected $fillable = [
-        'book_id',
         'name',
-        'price',
         'symbol',
     ];
 
-    public function books(): HasMany
+    public array $translatable = ['name'];
+
+    public function currency_prices(): HasMany
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(CurrencyPrice::class);
     }
 }

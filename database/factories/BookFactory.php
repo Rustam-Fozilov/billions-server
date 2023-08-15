@@ -23,7 +23,6 @@ class BookFactory extends Factory
                 'uz' => fake()->sentence(3),
                 'ru' => 'Это русский: ' . fake()->sentence(3)
             ],
-            'price' => fake()->randomNumber(6, true),
             'description' => [
                 'uz' => fake()->paragraph(10),
                 'ru' => 'Это русский: ' . fake()->paragraph(10)

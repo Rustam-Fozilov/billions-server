@@ -14,7 +14,12 @@ class Book extends Model
 {
     use HasFactory, HasTranslations, SoftDeletes;
 
-    protected $fillable = ['category_id', 'author_id', 'name', 'price', 'description'];
+    protected $fillable = [
+        'category_id',
+        'author_id',
+        'name',
+        'description'
+    ];
 
     public array $translatable = ['name', 'description'];
 
@@ -49,8 +54,8 @@ class Book extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function priceInCurrency(): BelongsTo
+    public function currency_prices(): HasMany
     {
-        return $this->belongsTo(BookPriceInCurrency::class);
+        return $this->hasMany(CurrencyPrice::class, 'book_id', 'id');
     }
 }

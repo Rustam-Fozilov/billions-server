@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Currency;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
             AuthorSeeder::class,
             AttributeSeeder::class,
             ValueSeeder::class,
+            CurrencySeeder::class,
             BookSeeder::class,
             DeliveryMethodSeeder::class,
             PaymentTypeSeeder::class,

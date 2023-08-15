@@ -15,8 +15,13 @@ class BookSeeder extends Seeder
         $books = Book::factory(10)->create();
 
         foreach ($books as $book) {
-            $book->priceInCurrency()->create([
-                ''
+            $book->currency_prices()->create([
+                'currency_id' => 1,
+                'price' => round(rand(10, 50), 2)
+            ]);
+            $book->currency_prices()->create([
+                'currency_id' => 2,
+                'price' => round(rand(120000, 150000), 2)
             ]);
 
             $book->stocks()->create([

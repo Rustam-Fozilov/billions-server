@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('book_price_in_currencies', function (Blueprint $table) {
+        Schema::create('currency_prices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('book_id')->constrained()->cascadeOnDelete();
-            $table->string('name');
+            $table->foreignId('currency_id')->constrained()->cascadeOnDelete();
             $table->float('price');
-            $table->char('symbol');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('book_price_in_currencies');
+        Schema::dropIfExists('currency_prices');
     }
 };
