@@ -6,15 +6,16 @@ use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 
 class CategoryController extends Controller
 {
 
-    public function index(): Collection
+    public function index(): JsonResponse
     {
-        return Category::all();
+        return $this->response(
+            CategoryResource::collection(Category::where('parent_id', null)->get())
+        );
     }
 
 

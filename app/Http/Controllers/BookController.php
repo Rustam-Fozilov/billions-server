@@ -6,14 +6,17 @@ use App\Http\Resources\BookResource;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
 class BookController extends Controller
 {
 
-    public function index()
+    public function index(Request $request): JsonResponse
     {
-        return response(BookResource::collection(Book::cursorPaginate(25)));
+        return $this->response(
+            BookResource::collection(Book::paginate($request['limit'] ?? 20))
+        );
     }
 
 

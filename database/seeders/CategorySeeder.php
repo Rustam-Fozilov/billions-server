@@ -15,41 +15,20 @@ class CategorySeeder extends Seeder
     {
         $category = Category::create([
             'name' => [
-                'uz' => 'Biznes',
-                'ru' => 'Бизнес'
+                'uz' => 'Shaxsiy rivojlanish',
+                'ru' => 'Саморазвитие'
             ]
         ]);
                 $category->child_categories()->create([
                     'name' => [
-                        'uz' => 'Startuplar',
-                        'ru' => 'Стартапы',
+                        'uz' => 'O\'z-o\'ziga ishonch',
+                        'ru' => 'Уверенность в себе',
                     ]
                 ]);
                 $category->child_categories()->create([
                     'name' => [
-                        'uz' => 'Menejment',
-                        'ru' => 'Менеджмент',
-                    ]
-                ]);
-
-
-
-        $category = Category::create([
-            'name' => [
-                'uz' => 'Marketing',
-                'ru' => 'Маркетинг'
-            ]
-        ]);
-                $category->child_categories()->create([
-                    'name' => [
-                        'uz' => 'Sotuvlar',
-                        'ru' => 'Продажи',
-                    ]
-                ]);
-                $category->child_categories()->create([
-                    'name' => [
-                        'uz' => 'Mijoz xizmatlari',
-                        'ru' => 'Клиентский сервис',
+                        'uz' => 'Vaqtni boshqarish',
+                        'ru' => 'Тайм-менеджмент',
                     ]
                 ]);
 
@@ -63,16 +42,80 @@ class CategorySeeder extends Seeder
         ]);
                 $category->child_categories()->create([
                     'name' => [
-                        'uz' => 'Oilaviy psixologiya',
-                        'ru' => 'Семейная психология',
+                        'uz' => 'o\'z-o\'zini anglash',
+                        'ru' => 'Самопознание',
                     ]
                 ]);
                 $category->child_categories()->create([
                     'name' => [
-                        'uz' => 'Munosabatlar',
-                        'ru' => 'Отношения',
+                        'uz' => 'Bolalar psixologiyasi',
+                        'ru' => 'Детская психология',
                     ]
                 ]);
 
+
+
+        $category = Category::create([
+            'name' => [
+                'uz' => 'Biznes',
+                'ru' => 'Бизнес'
+            ]
+        ]);
+                $category->child_categories()->create([
+                    'name' => [
+                        'uz' => 'Menejment',
+                        'ru' => 'Менеджмент',
+                    ]
+                ]);
+                $category->child_categories()->create([
+                    'name' => [
+                        'uz' => 'Startuplar',
+                        'ru' => 'Стартапы',
+                    ]
+                ]);
+
+
+
+        Category::create([
+            'name' => [
+                'uz' => 'Moliya',
+                'ru' => 'Финансы'
+            ]
+        ]);
+
+        Category::create([
+            'name' => [
+                'uz' => 'Bolalar va ota-onalar uchun',
+                'ru' => 'Для детей и родителей'
+            ]
+        ]);
+
+        Category::create([
+            'name' => [
+                'uz' => 'Marketing va sotuvlar',
+                'ru' => 'Маркетинг и продажи'
+            ]
+        ]);
+
+        Category::create([
+            'name' => [
+                'uz' => 'Iqtisodiyot va siyosat',
+                'ru' => 'Экономика и политика'
+            ]
+        ]);
+
+        Category::create([
+            'name' => [
+                'uz' => 'Sog\'lom hayot tarzi',
+                'ru' => 'Здоровый образ жизни'
+            ]
+        ]);
+
+        Category::create([
+            'name' => [
+                'uz' => 'San\'at va ijod',
+                'ru' => 'Искусство и творчество'
+            ]
+        ]);
     }
 }
