@@ -25,12 +25,18 @@ class CategorySeeder extends Seeder
                         'ru' => 'Уверенность в себе',
                     ]
                 ]);
-                $category->child_categories()->create([
+                $subCategory = $category->child_categories()->create([
                     'name' => [
                         'uz' => 'Vaqtni boshqarish',
                         'ru' => 'Тайм-менеджмент',
                     ]
                 ]);
+                        $subCategory->child_categories()->create([
+                            'name' => [
+                                'uz' => 'Vaqtni boshqarish subcategory',
+                                'ru' => 'Тайм-менеджмент subcategory',
+                            ]
+                        ]);
 
 
 

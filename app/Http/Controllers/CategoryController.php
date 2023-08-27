@@ -7,14 +7,19 @@ use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
 
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
         return $this->response(
-            CategoryResource::collection(Category::where('parent_id', null)->get())
+            CategoryResource::collection(
+                $request['only_parents'] ?
+                    Category::where('parent_id', null)->get() :
+                    Category::paginate($request['limit'] ?? 10)
+            )
         );
     }
 
