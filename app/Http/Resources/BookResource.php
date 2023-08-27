@@ -17,17 +17,15 @@ class BookResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->getTranslations('name'),
-            'prices' => CurrencyPriceRequest::collection($this->currency_prices),
+            'images' => ImageResource::collection($this->images),
             'author' => $this->author->first_name . ' ' . $this->author->last_name,
+            'prices' => CurrencyPriceRequest::collection($this->currency_prices),
             'category' => new CategoryResource($this->category),
-            'description' => $this->getTranslations('description'),
             'inventory' => StockResource::collection($this->stocks),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'description' => $this->getTranslations('description'),
             'order_quantity' => $this->when(isset($this->quantity), $this->quantity),
-            'links' => [
-                'self' => 'link-value',
-            ],
         ];
     }
 }

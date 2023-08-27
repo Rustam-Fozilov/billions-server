@@ -24,6 +24,10 @@ class BookSeeder extends Seeder
                 'price' => round(rand(120000, 150000), 2)
             ]);
 
+            $book->images()->create([
+                'link' => 'book-cover.png'
+            ]);
+
             $book->stocks()->create([
                 'quantity' => rand(1, 10),
                 'attributes' => json_encode([
