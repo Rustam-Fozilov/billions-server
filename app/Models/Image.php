@@ -10,7 +10,7 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['link'];
+    protected $fillable = ['link', 'quality'];
 
     public function imageable(): MorphTo
     {

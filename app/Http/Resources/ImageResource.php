@@ -14,9 +14,11 @@ class ImageResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        // TODO give all data in one object
         return [
             'id' => $this->id,
             'link' => $this->link,
+            'quality' => $this->quality,
         ];
     }
 }

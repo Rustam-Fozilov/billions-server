@@ -24,9 +24,20 @@ class BookSeeder extends Seeder
                 'price' => round(rand(120000, 150000), 2)
             ]);
 
+
             $book->images()->create([
-                'link' => 'book-cover.png'
+                'link' => 'book-cover.png',
+                'quality' => 'high'
             ]);
+            $book->images()->create([
+                'link' => 'book-cover.png',
+                'quality' => 'medium'
+            ]);
+            $book->images()->create([
+                'link' => 'book-cover.png',
+                'quality' => 'low'
+            ]);
+
 
             $book->stocks()->create([
                 'quantity' => rand(1, 10),

@@ -32,9 +32,11 @@ class BookController extends Controller
     }
 
 
-    public function show($id)
+    public function show($id): JsonResponse
     {
-        return response(Book::with('stocks')->find($id));
+        return $this->response(
+            new BookResource(Book::find($id))
+        );
     }
 
 
