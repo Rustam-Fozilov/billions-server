@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('values', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->json('details')->nullable();
             $table->morphs('valuable');
             $table->timestamps();
         });

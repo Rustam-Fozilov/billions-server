@@ -12,7 +12,7 @@ class Value extends Model
 {
     use HasFactory, HasTranslations;
 
-    protected $fillable = ['attribute_id', 'book_id', 'name'];
+    protected $fillable = ['attribute_id', 'book_id', 'name', 'details'];
 
     public array $translatable = ['name'];
 

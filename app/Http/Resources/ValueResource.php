@@ -17,6 +17,7 @@ class ValueResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->getTranslations('name'),
+            'details' => json_decode($this->details),
         ];
     }
 }

@@ -24,13 +24,21 @@ class SettingSeeder extends Seeder
            'name' => [
                'uz' => 'O\'zbekcha',
                'ru' => 'na uzbekskom'
-           ]
+           ],
+            'details' => json_encode([
+                'code' => 'uz',
+                'icon' => 'uzb-flag.png'
+            ])
         ]);
         $setting->values()->create([
             'name' => [
                 'uz' => 'Ruscha',
                 'ru' => 'na russkom'
-            ]
+            ],
+            'details' => json_encode([
+                'code' => 'ru',
+                'icon' => 'russia-flag.png'
+            ])
         ]);
 
 

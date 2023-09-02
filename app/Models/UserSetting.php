@@ -10,7 +10,12 @@ class UserSetting extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'user_id',
+        'setting_id',
+        'value_id',
+        'switch',
+    ];
 
     public function setting(): BelongsTo
     {
