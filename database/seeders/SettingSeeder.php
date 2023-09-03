@@ -23,7 +23,7 @@ class SettingSeeder extends Seeder
         $setting->values()->create([
            'name' => [
                'uz' => 'O\'zbekcha',
-               'ru' => 'na uzbekskom'
+               'ru' => 'Узбекский'
            ],
             'details' => json_encode([
                 'code' => 'uz',
@@ -33,7 +33,7 @@ class SettingSeeder extends Seeder
         $setting->values()->create([
             'name' => [
                 'uz' => 'Ruscha',
-                'ru' => 'na russkom'
+                'ru' => 'Русский'
             ],
             'details' => json_encode([
                 'code' => 'ru',
@@ -45,21 +45,21 @@ class SettingSeeder extends Seeder
 
         $setting = Setting::create([
             'name' => [
-                'uz' => 'Pul birligi',
-                'ru' => 'rus Pul birligi'
+                'uz' => 'Valyuta',
+                'ru' => 'Валюта'
             ],
             'type' => SettingType::SELECT->value,
         ]);
         $setting->values()->create([
             'name' => [
                 'uz' => 'So\'m',
-                'ru' => 'rus So\'m'
+                'ru' => 'Сум'
             ]
         ]);
         $setting->values()->create([
             'name' => [
                 'uz' => 'Dollar',
-                'ru' => 'rus Dollar'
+                'ru' => 'Доллар'
             ]
         ]);
 

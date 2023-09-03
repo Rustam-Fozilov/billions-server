@@ -2,30 +2,29 @@
 
 namespace Database\Seeders;
 
-use App\Models\DefaultSetting;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\GuestSetting;
 use Illuminate\Database\Seeder;
 
-class DefaultSettingSeeder extends Seeder
+class GuestSettingSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DefaultSetting::create([
+        GuestSetting::create([
             'setting_id' => 1,
             'value_id' => 11,
             'switch' => null,
         ]);
 
-        DefaultSetting::create([
+        GuestSetting::create([
             'setting_id' => 3,
             'value_id' => null,
             'switch' => false,
         ]);
 
-        DefaultSetting::create([
+        GuestSetting::create([
             'setting_id' => 4,
             'value_id' => null,
             'switch' => true,

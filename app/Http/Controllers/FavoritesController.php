@@ -14,9 +14,9 @@ class FavoritesController extends Controller
 
     public function index(): JsonResponse
     {
-        return response()->json([
-            'data' => auth()->user()->favorites
-        ]);
+        return $this->response(
+            auth()->user()->favorites
+        );
     }
 
     public function store(Request $request): JsonResponse
@@ -27,9 +27,7 @@ class FavoritesController extends Controller
 
         auth()->user()->favorites()->attach($request->book_id);
 
-        return response()->json([
-            'success' => true
-        ]);
+        return $this->success('Added to favorites');
     }
 
     public function destroy($id): JsonResponse

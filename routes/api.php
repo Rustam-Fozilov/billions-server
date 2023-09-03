@@ -5,9 +5,9 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookReviewController;
 use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DefaultSettingController;
 use App\Http\Controllers\DeliveryMethodController;
 use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\GuestSettingController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\ReviewController;
@@ -41,5 +41,5 @@ Route::apiResources([
     'statuses.orders' => StatusOrderController::class,
     'categories.books' => CategoryBookController::class,
     'delivery-methods' => DeliveryMethodController::class,
-    'default-settings' => DefaultSettingController::class,
+    'guest-settings' => GuestSettingController::class,
 ]);

@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             UserAddressSeeder::class,
             StatusSeeder::class,
             SettingSeeder::class,
-            DefaultSettingSeeder::class,
+            GuestSettingSeeder::class,
         ]);
     }
 }

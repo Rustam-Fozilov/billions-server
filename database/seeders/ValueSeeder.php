@@ -51,14 +51,14 @@ class ValueSeeder extends Seeder
         $attribute->values()->create([
             'name' => [
                 'uz' => 'Qattiq',
-                'ru' => 'Tverdiy'
+                'ru' => 'Жесткий'
             ]
         ]);
 
         $attribute->values()->create([
             'name' => [
                 'uz' => 'Yumshoq',
-                'ru' => 'Tverdiy'
+                'ru' => 'Мягкий'
             ]
         ]);
 
