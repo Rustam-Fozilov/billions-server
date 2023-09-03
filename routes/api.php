@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookReviewController;
 use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DefaultSettingController;
 use App\Http\Controllers\DeliveryMethodController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\OrderController;
@@ -14,7 +15,6 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\StatusOrderController;
 use App\Http\Controllers\UserAddressController;
-use App\Http\Controllers\UserPaymentCardController;
 use App\Http\Controllers\UserSettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,18 +27,19 @@ Route::get('user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 Route::get('books/{book}/related', [BookController::class, 'related']);
 
 Route::apiResources([
-    'categories' => CategoryController::class,
-    'categories.books' => CategoryBookController::class,
-    'statuses' => StatusController::class,
-    'statuses.orders' => StatusOrderController::class,
-    'favorites' => FavoritesController::class,
     'books' => BookController::class,
     'orders' => OrderController::class,
-    'delivery-methods' => DeliveryMethodController::class,
+    'reviews' => ReviewController::class,
+    'statuses' => StatusController::class,
+    'settings' => SettingController::class,
+    'favorites' => FavoritesController::class,
+    'categories' => CategoryController::class,
+    'books.reviews' => BookReviewController::class,
+    'user-settings' => UserSettingController::class,
     'payment-types' => PaymentTypeController::class,
     'user-addresses' => UserAddressController::class,
-    'reviews' => ReviewController::class,
-    'books.reviews' => BookReviewController::class,
-    'settings' => SettingController::class,
-    'user-settings' => UserSettingController::class,
+    'statuses.orders' => StatusOrderController::class,
+    'categories.books' => CategoryBookController::class,
+    'delivery-methods' => DeliveryMethodController::class,
+    'default-settings' => DefaultSettingController::class,
 ]);
