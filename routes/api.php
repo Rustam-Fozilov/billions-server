@@ -38,8 +38,8 @@ Route::apiResources([
     'user-settings' => UserSettingController::class,
     'payment-types' => PaymentTypeController::class,
     'user-addresses' => UserAddressController::class,
+    'guest-settings' => GuestSettingController::class,
     'statuses.orders' => StatusOrderController::class,
     'categories.books' => CategoryBookController::class,
     'delivery-methods' => DeliveryMethodController::class,
-    'guest-settings' => GuestSettingController::class,
 ]);
