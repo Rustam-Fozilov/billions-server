@@ -33,6 +33,9 @@ class UserSeeder extends Seeder
         ]);
         $user->roles()->attach(4);
 
-        User::factory(10)->hasAttached([Role::find(4)])->create();
+        $users = User::factory(10)->hasAttached([Role::find(4)])->create();
+        foreach ($users as $user) {
+            $user->favorites()->attach(rand(1, 10));
+        }
     }
 }

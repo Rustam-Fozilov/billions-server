@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             RoleSeeder::class,
-            UserSeeder::class,
             AuthorSeeder::class,
             AttributeSeeder::class,
             ValueSeeder::class,
             CurrencySeeder::class,
             BookSeeder::class,
+            UserSeeder::class,
             DeliveryMethodSeeder::class,
             PaymentTypeSeeder::class,
             UserAddressSeeder::class,
