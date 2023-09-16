@@ -16,6 +16,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\StatusOrderController;
 use App\Http\Controllers\UserAddressController;
 use App\Http\Controllers\UserSettingController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,6 +28,7 @@ Route::get('user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 Route::get('books/{book}/related', [BookController::class, 'related']);
 
 Route::apiResources([
+    'cart' => CartController::class,
     'books' => BookController::class,
     'orders' => OrderController::class,
     'reviews' => ReviewController::class,

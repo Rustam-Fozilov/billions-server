@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             SettingSeeder::class,
             GuestSettingSeeder::class,
+            CartSeeder::class,
         ]);
     }
 }
