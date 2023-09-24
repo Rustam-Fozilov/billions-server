@@ -17,7 +17,8 @@ class Category extends Model
         'parent_id',
         'name',
         'icon',
-        'priority'
+        'priority',
+        'path_name',
     ];
 
     public array $translatable = ['name'];

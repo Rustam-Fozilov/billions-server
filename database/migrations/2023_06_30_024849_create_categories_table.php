@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('icon')->nullable();
             $table->integer('priority')->nullable();
+            $table->string('path_name')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
