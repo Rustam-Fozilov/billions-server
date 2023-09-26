@@ -6,11 +6,18 @@ use App\Http\Resources\BookResource;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use App\Services\BookService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
+    public function __construct(
+        protected BookService $bookService
+    )
+    {
+    }
 
     public function index(Request $request): JsonResponse
     {
@@ -63,6 +70,23 @@ class BookController extends Controller
 
         return $this->response(
             BookResource::collection($books)
+        );
+    }
+
+
+    public function search($query): JsonResponse
+    {
+        $result = $this->bookService->search($query);
+
+
+        if ($result->isEmpty()) {
+            return $this->error('No results found');
+        }
+
+
+        return $this->success(
+            'Search results',
+            BookResource::collection($result)
         );
     }
 }
