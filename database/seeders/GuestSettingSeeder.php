@@ -19,6 +19,12 @@ class GuestSettingSeeder extends Seeder
         ]);
 
         GuestSetting::create([
+            'setting_id' => 2,
+            'value_id' => 13,
+            'switch' => null,
+        ]);
+
+        GuestSetting::create([
             'setting_id' => 3,
             'value_id' => null,
             'switch' => false,

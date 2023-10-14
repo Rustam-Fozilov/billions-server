@@ -39,6 +39,7 @@ class OrderController extends Controller
         $notFoundBooks = [];
         $address = auth()->user()->addresses()->find($request->address_id);
 
+
         foreach ($request->books as $bookRequest) {
             $book = Book::with('stocks')->findOrFail($bookRequest['book_id']);
             $book->quantity = $bookRequest['quantity'];

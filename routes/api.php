@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookReviewController;
 use App\Http\Controllers\CategoryBookController;
@@ -20,7 +21,7 @@ use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::post('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'lo    gin']);
 Route::post('verify-code', [AuthController::class, 'verifyCode']);
 Route::post('logout', [AuthController::class, 'logout']);
 Route::post('register', [AuthController::class, 'register']);
@@ -36,6 +37,7 @@ Route::apiResources([
     'books' => BookController::class,
     'orders' => OrderController::class,
     'reviews' => ReviewController::class,
+    'authors' => AuthorController::class,
     'statuses' => StatusController::class,
     'settings' => SettingController::class,
     'favorites' => FavoritesController::class,

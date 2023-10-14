@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AuthorResource;
 use App\Models\Author;
 use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\UpdateAuthorRequest;
+use Illuminate\Http\JsonResponse;
 
 class AuthorController extends Controller
 {
 
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        return $this->response(
+            AuthorResource::collection(Author::all())
+        );
     }
 
 
@@ -27,15 +31,11 @@ class AuthorController extends Controller
     }
 
 
-    public function show(Author $author)
+    public function show(Author $author): JsonResponse
     {
-        //
-    }
-
-
-    public function edit(Author $author)
-    {
-        //
+        return $this->response(
+            new AuthorResource($author)
+        );
     }
 
 

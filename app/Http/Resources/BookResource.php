@@ -18,7 +18,7 @@ class BookResource extends JsonResource
             'id' => $this->id,
             'name' => $this->getTranslations('name'),
             'images' => ImageResource::collection($this->images),
-            'author' => $this->author->first_name . ' ' . $this->author->last_name,
+            'author' => new AuthorResource($this->author),
             'prices' => CurrencyPriceRequest::collection($this->currency_prices),
             'category' => new CategoryResource($this->category),
             'inventory' => StockResource::collection($this->stocks),
