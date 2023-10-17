@@ -79,4 +79,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class, 'user_id', 'id');
     }
+
+    public function verifyCodes(): HasMany
+    {
+        return $this->hasMany(VerifyCode::class);
+    }
 }

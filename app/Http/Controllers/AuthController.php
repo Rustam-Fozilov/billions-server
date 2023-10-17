@@ -4,45 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use App\Http\Resources\UserResource;
-use App\Models\User;
 use App\Services\SMSService;
+use App\Services\UserService;
+use App\Services\VerifyCodeService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
     public function __construct(
         protected SMSService $smsService,
+        protected VerifyCodeService $verifyCodeService,
+        protected UserService $userService
     )
     {
+        $this->middleware('auth:sanctum')->except(['sendSMSCode']);
     }
 
 
-    public function login(LoginRequest $request): JsonResponse
+    public function sendSMSCode(LoginRequest $request): JsonResponse
     {
-        $user = User::where('phone', $request->phone)->first();
+        $user = $this->userService->findOrCreate(phone: $request->phone);
+        $code = $this->smsService->sendVerificationCode($request->phone, $request->lang);
+        $code_id = $this->verifyCodeService->create($user->id, $code);
 
-
-        if (!$user) {
-            User::create([
-                'phone' => $request->phone,
-            ]);
-        }
-
-
-        $code = $this->smsService->sendVerificationCode($request->phone);
         return $this->success('Verification code sent successfully', [
+            'id' => $code_id->id,
             'code' => $code
-        ]);
-    }
-
-
-    public function verifyCode(Request $request)
-    {
-        $request->validate([
-            'code' => 'required'
         ]);
     }
 
@@ -51,6 +39,14 @@ class AuthController extends Controller
     {
         return $this->response(
             new UserResource($request->user())
+        );
+    }
+
+
+    public function logout(): JsonResponse
+    {
+        return $this->response(
+            auth()->user()->currentAccessToken()->delete()
         );
     }
 }

@@ -13,6 +13,7 @@ class UserAddressSeeder extends Seeder
     public function run(): void
     {
         User::find(2)->addresses()->create([
+            'address_name' => 'My home',
             "latitude" => "latitude 2",
             "longitude" => "longitude 2",
             "region" => "Tashkent city 2",
