@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AuthorResource extends JsonResource
+class CurrencyPriceResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +17,8 @@ class AuthorResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'first_name' => $this->getTranslations('first_name'),
-            'last_name' => $this->getTranslations('last_name'),
-            'photo' => $this->photo,
-            'books' => $this->when($request->withBooks, BookResource::collection($this->books)),
+            'price' => $this->price,
+            'currency' => new CurrencyResource(Currency::find($this->currency_id)),
         ];
     }
 }

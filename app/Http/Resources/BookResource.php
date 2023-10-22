@@ -8,6 +8,14 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class BookResource extends JsonResource
 {
     /**
+     * @param string $wrap
+     */
+    public static function setWrap(string $wrap): void
+    {
+        self::$wrap = $wrap;
+    }
+
+    /**
      * Transform the resource into an array.
      *
      * @return array<string, mixed>
@@ -18,8 +26,8 @@ class BookResource extends JsonResource
             'id' => $this->id,
             'name' => $this->getTranslations('name'),
             'images' => ImageResource::collection($this->images),
-            'author' => new AuthorResource($this->author),
-            'prices' => CurrencyPriceRequest::collection($this->currency_prices),
+            'author' => $this->when($request->withAuthor, new AuthorResource($this->author)),
+            'prices' => CurrencyPriceResource::collection($this->currency_prices),
             'category' => new CategoryResource($this->category),
             'inventory' => StockResource::collection($this->stocks),
             'created_at' => $this->created_at,

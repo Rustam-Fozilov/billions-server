@@ -18,6 +18,7 @@ class OrderController extends Controller
         $this->middleware('auth:sanctum');
     }
 
+
     public function index(): JsonResponse
     {
         if (request()->has('status_id')) {
@@ -53,7 +54,7 @@ class OrderController extends Controller
                 $bookResource = new BookResource($bookWithStock);
 
 
-                $sum += $bookResource['price'];
+                $sum += $bookResource['currency_prices'][1]['price'];
                 $books[] = $bookResource->resolve();
             } else {
                 $bookRequest['we_have'] = $book->stocks()->find($bookRequest['stock_id'])->quantity;
@@ -63,7 +64,6 @@ class OrderController extends Controller
 
 
         if ($notFoundBooks === [] && $books !== [] && $sum !== 0) {
-//            TODO add order status
             $order = auth()->user()->orders()->create([
                 'comment' => $request->comment,
                 'delivery_method_id' => $request->delivery_method_id,

@@ -23,9 +23,9 @@ class StoreUserAddressRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'region' => 'required',
+            'region' => 'nullable',
             'street' => 'required',
-            'house' => 'nullable',
+            'house' => 'required',
         ];
     }
 }

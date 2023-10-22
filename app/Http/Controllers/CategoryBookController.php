@@ -11,8 +11,12 @@ class CategoryBookController extends Controller
 {
     public function index(Category $category): JsonResponse
     {
+        BookResource::setWrap('books');
+
         return $this->response(
-            BookResource::collection($category->books()->cursorPaginate(25))
+            BookResource::collection($category->books()->simplePaginate(1))
+                ->response()
+                ->getData(true)
         );
     }
 }

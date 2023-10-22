@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Currency;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,7 +18,7 @@ class CurrencyPriceRequest extends JsonResource
         return [
             'id' => $this->id,
             'price' => $this->price,
-            'currency' => new CurrencyRequest($this->currency),
+            'currency' => new CurrencyRequest(Currency::find($this->currency_id)),
         ];
     }
 }

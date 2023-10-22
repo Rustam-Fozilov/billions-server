@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AuthorResource extends JsonResource
+class CurrencyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,8 @@ class AuthorResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'first_name' => $this->getTranslations('first_name'),
-            'last_name' => $this->getTranslations('last_name'),
-            'photo' => $this->photo,
-            'books' => $this->when($request->withBooks, BookResource::collection($this->books)),
+            'name' => $this->getTranslations('name'),
+            'symbol' => $this->symbol,
         ];
     }
 }
