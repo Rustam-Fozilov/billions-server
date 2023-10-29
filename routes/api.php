@@ -20,6 +20,7 @@ use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::post('books/filter', [BookController::class, 'filter']);
 Route::get('books/search/{query}', [BookController::class, 'search']);
 Route::get('books/{book}/related', [BookController::class, 'related']);
 Route::get('authors/search/{query}', [AuthorController::class, 'search']);

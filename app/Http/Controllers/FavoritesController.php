@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFavoriteRequest;
+use App\Http\Resources\BookResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -12,19 +14,15 @@ class FavoritesController extends Controller
         $this->middleware('auth:sanctum');
     }
 
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
         return $this->response(
-            auth()->user()->favorites
+            BookResource::collection(auth()->user()->favorites)
         );
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(StoreFavoriteRequest $request): JsonResponse
     {
-        $request->validate([
-            'book_id' => 'required|exists:books,id'
-        ]);
-
         auth()->user()->favorites()->attach($request->book_id);
 
         return $this->success('Added to favorites');

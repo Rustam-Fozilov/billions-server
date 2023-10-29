@@ -89,4 +89,16 @@ class BookController extends Controller
             BookResource::collection($result)
         );
     }
+
+
+    public function filter(Request $request)
+    {
+        $books = $this->bookService->filter($request);
+
+        dd($books);
+
+        return $this->response(
+            $books
+        );
+    }
 }

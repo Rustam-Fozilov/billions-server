@@ -14,7 +14,7 @@ class CategoryBookController extends Controller
         BookResource::setWrap('books');
 
         return $this->response(
-            BookResource::collection($category->books()->simplePaginate(1))
+            BookResource::collection($category->books()->simplePaginate(20))
                 ->response()
                 ->getData(true)
         );

@@ -30,4 +30,20 @@ class BookService
 
         return $books;
     }
+
+
+    public function filter($request)
+    {
+        Book::query()
+            ->when($request->has('min_price'), function ($q) use ($request) {
+                $q->whereHas('stocks', function ($q) use ($request) {
+                    $q->whereJsonContains('attributes->attribute_id', 1);
+                })->get();
+            })->dd();
+//            ->when($request->has('max_price'), function ($q) use ($request) {
+//                $q->whereHas('stocks', function ($q) use ($request) {
+//                    $q->where('price', '<=', $request->max_price);
+//                });
+//            })->dd();
+    }
 }
