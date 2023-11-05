@@ -27,12 +27,6 @@ class BookController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
-
     public function store(StoreBookRequest $request)
     {
         //
@@ -44,12 +38,6 @@ class BookController extends Controller
         return $this->response(
             new BookResource(Book::find($id))
         );
-    }
-
-
-    public function edit(Book $book)
-    {
-        //
     }
 
 
@@ -76,6 +64,8 @@ class BookController extends Controller
 
     public function search($query): JsonResponse
     {
+        BookResource::setWrap('books');
+
         $result = $this->bookService->search($query);
 
 
@@ -86,7 +76,7 @@ class BookController extends Controller
 
         return $this->success(
             'Search results',
-            BookResource::collection($result)
+            BookResource::collection($result)->response()->getData(true)
         );
     }
 

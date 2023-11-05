@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\AuthorResource;
-use App\Http\Resources\BookResource;
 use App\Models\Author;
 use App\Http\Requests\StoreAuthorRequest;
 use App\Http\Requests\UpdateAuthorRequest;
+use App\Models\User;
 use App\Services\AuthorService;
 use Illuminate\Http\JsonResponse;
-use function PHPUnit\Framework\isEmpty;
+use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {

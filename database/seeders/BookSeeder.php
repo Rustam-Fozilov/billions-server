@@ -26,15 +26,15 @@ class BookSeeder extends Seeder
 
 
             $book->images()->create([
-                'link' => 'book-cover.png',
+                'link' => fake()->imageUrl,
                 'quality' => 'high'
             ]);
             $book->images()->create([
-                'link' => 'book-cover.png',
+                'link' => fake()->imageUrl,
                 'quality' => 'medium'
             ]);
             $book->images()->create([
-                'link' => 'book-cover.png',
+                'link' => fake()->imageUrl,
                 'quality' => 'low'
             ]);
 

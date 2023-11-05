@@ -42,7 +42,7 @@ class User extends Authenticatable
 
     public function favorites(): BelongsToMany
     {
-        return $this->belongsToMany(Book::class, 'favorite_user');
+        return $this->belongsToMany(Book::class, 'favorite_user')->withPivot('id');
     }
 
     public function addresses(): HasMany
@@ -62,7 +62,7 @@ class User extends Authenticatable
 
     public function hasFavorite($favorite_id): bool
     {
-        return $this->favorites->contains($favorite_id);
+        return (bool)$this->favorites()->find($favorite_id);
     }
 
     public function reviews(): HasMany

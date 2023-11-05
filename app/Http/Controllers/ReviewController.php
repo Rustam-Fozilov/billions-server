@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ReviewResource;
 use App\Models\Review;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
@@ -11,18 +12,14 @@ class ReviewController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:sanctum');
+        $this->middleware('auth:sanctum')->except('index');
     }
 
-    public function index()
+    public function index(): JsonResponse
     {
-        return auth()->user()->reviews()->with('book')->paginate(2);
-    }
-
-
-    public function create()
-    {
-        //
+        return $this->response(
+            ReviewResource::collection(Review::all())
+        );
     }
 
 
@@ -33,12 +30,6 @@ class ReviewController extends Controller
 
 
     public function show(Review $review)
-    {
-        //
-    }
-
-
-    public function edit(Review $review)
     {
         //
     }

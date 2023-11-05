@@ -19,7 +19,7 @@ class BookReviewController extends Controller
         return $this->response([
             'overall_rating' => round($book->reviews()->avg('rating'), 1),
             'reviews_count' => $book->reviews()->count(),
-            'reviews' => ReviewResource::collection($book->reviews()->paginate(10)),
+            'reviews' => ReviewResource::collection($book->reviews()->simplePaginate(10)),
         ]);
     }
 

@@ -13,7 +13,6 @@ class BookService
             ->orWhere('name->ru', 'LIKE', '%' . $query . '%')
             ->orWhere('description->uz', 'LIKE', '%' . $query . '%')
             ->orWhere('description->ru', 'LIKE', '%' . $query . '%')
-            ->limit(20)
             ->get();
 
 
@@ -23,7 +22,6 @@ class BookService
                     $q->where('first_name', 'LIKE', '%' . $query . '%')
                         ->orWhere('last_name', 'LIKE', '%' . $query . '%');
                 })
-                ->limit(20)
                 ->get();
         }
 

@@ -17,8 +17,8 @@ class CategoryController extends Controller
         return $this->response(
             CategoryResource::collection(
                 $request['only_parents'] ?
-                    Category::where('parent_id', null)->get() :
-                    Category::paginate($request['limit'] ?? 10)
+                    Category::where('parent_id', null)->paginate($request['limit'] ?? 30) :
+                    Category::paginate($request['limit'] ?? 30)
             )
         );
     }

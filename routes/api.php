@@ -15,6 +15,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\StatusOrderController;
 use App\Http\Controllers\UserAddressController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserSettingController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::get('authors/search/{query}', [AuthorController::class, 'search']);
 
 
 Route::apiResources([
+    'user' => UserController::class,
     'cart' => CartController::class,
     'books' => BookController::class,
     'orders' => OrderController::class,

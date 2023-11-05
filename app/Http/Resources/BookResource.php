@@ -24,6 +24,7 @@ class BookResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'pivot' => $this->pivot,
             'name' => $this->getTranslations('name'),
             'images' => ImageResource::collection($this->images),
             'author' => $this->when($request->withAuthor, new AuthorResource($this->author)),

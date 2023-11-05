@@ -43,4 +43,9 @@ class UserService
             $password
         );
     }
+
+    public function find($column, $value)
+    {
+        return User::where($column, $value)->get();
+    }
 }
