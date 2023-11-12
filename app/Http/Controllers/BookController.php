@@ -19,6 +19,7 @@ class BookController extends Controller
     {
     }
 
+
     public function index(Request $request): JsonResponse
     {
         return $this->response(
@@ -68,11 +69,9 @@ class BookController extends Controller
 
         $result = $this->bookService->search($query);
 
-
         if ($result->isEmpty()) {
             return $this->error('No results found');
         }
-
 
         return $this->success(
             'Search results',

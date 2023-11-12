@@ -16,11 +16,13 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\StatusOrderController;
 use App\Http\Controllers\UserAddressController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserReviewsController;
 use App\Http\Controllers\UserSettingController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::delete('cart', [CartController::class, 'destroyAll']);
 Route::post('books/filter', [BookController::class, 'filter']);
 Route::get('books/search/{query}', [BookController::class, 'search']);
 Route::get('books/{book}/related', [BookController::class, 'related']);
@@ -39,6 +41,7 @@ Route::apiResources([
     'favorites' => FavoritesController::class,
     'categories' => CategoryController::class,
     'books.reviews' => BookReviewController::class,
+    'user-reviews' => UserReviewsController::class,
     'user-settings' => UserSettingController::class,
     'payment-types' => PaymentTypeController::class,
     'user-addresses' => UserAddressController::class,

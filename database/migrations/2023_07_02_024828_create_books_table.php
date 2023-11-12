@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->foreignId('author_id')->constrained()->cascadeOnDelete();
             $table->text('name');
+            $table->text('short_description')->nullable();
             $table->text('description');
             $table->timestamps();
             $table->softDeletes();

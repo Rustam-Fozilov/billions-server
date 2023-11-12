@@ -46,6 +46,6 @@ class UserService
 
     public function find($column, $value)
     {
-        return User::where($column, $value)->get();
+        return User::where($column, $value)->first();
     }
 }

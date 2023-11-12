@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CartRequest;
 use App\Http\Resources\CartResource;
 use App\Models\Cart;
+use App\Services\CartService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
 
-    public function __construct()
+    public function __construct(
+        protected CartService $cartService
+    )
     {
         $this->middleware('auth:sanctum');
     }
@@ -27,13 +30,11 @@ class CartController extends Controller
 
     public function store(CartRequest $request): JsonResponse
     {
-        $cart = auth()->user()->booksInCart()->create(
-            $request->all()
-        );
+        if ($request->books) {
+            return $this->cartService->storeAll($request->books);
+        }
 
-        return $this->success('Book added to cart successfully',
-            new CartResource($cart)
-        );
+        return $this->cartService->store($request);
     }
 
 
@@ -47,13 +48,7 @@ class CartController extends Controller
 
     public function update(Request $request, Cart $cart): JsonResponse
     {
-        $cart->update(
-            $request->all()
-        );
-
-        return $this->response(
-            new CartResource($cart)
-        );
+        return $this->cartService->update($request['book_id'], $request['quantity'], $request['originalPrice']);
     }
 
 
@@ -64,5 +59,12 @@ class CartController extends Controller
         return $this->success('Cart deleted successfully',
             new CartResource($cart)
         );
+    }
+
+    public function destroyAll(): JsonResponse
+    {
+        auth()->user()->booksInCart()->delete();
+
+        return $this->success('All books deleted successfully from cart');
     }
 }

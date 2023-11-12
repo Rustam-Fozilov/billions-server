@@ -28,6 +28,10 @@ class BookFactory extends Factory
                 'uz' => fake()->paragraph(10),
                 'ru' => 'Это русский: ' . fake()->paragraph(10)
             ],
+            'short_description' => [
+                'uz' => fake()->sentence(10),
+                'ru' => 'Это русский: ' . fake()->sentence(10)
+            ]
         ];
     }
 }

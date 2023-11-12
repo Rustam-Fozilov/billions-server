@@ -35,6 +35,7 @@ class BookResource extends JsonResource
             'updated_at' => $this->updated_at,
             'description' => $this->getTranslations('description'),
             'order_quantity' => $this->when(isset($this->quantity), $this->quantity),
+            'short_description' => $this->getTranslations('short_description'),
         ];
     }
 }

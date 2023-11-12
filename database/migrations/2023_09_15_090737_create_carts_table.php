@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('book_id')->constrained()->cascadeOnDelete();
             $table->integer('quantity');
+            $table->integer('total');
             $table->timestamps();
         });
     }

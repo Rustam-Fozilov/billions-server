@@ -51,8 +51,9 @@ class AuthController extends Controller
 
     public function logout(): JsonResponse
     {
-        return $this->response(
-            auth()->user()->currentAccessToken()->delete()
+        return $this->success(
+            'Logged out successfully',
+            auth()->user()->tokens()->delete()
         );
     }
 

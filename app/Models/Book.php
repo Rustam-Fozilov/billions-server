@@ -19,10 +19,11 @@ class Book extends Model
         'category_id',
         'author_id',
         'name',
-        'description'
+        'description',
+        'short_description'
     ];
 
-    public array $translatable = ['name', 'description'];
+    public array $translatable = ['name', 'description', 'short_description'];
 
     public function category(): BelongsTo
     {

@@ -7,7 +7,6 @@ use App\Models\UserAddress;
 use App\Http\Requests\StoreUserAddressRequest;
 use App\Http\Requests\UpdateUserAddressRequest;
 use Illuminate\Http\JsonResponse;
-use function Sodium\add;
 
 class UserAddressController extends Controller
 {
@@ -16,17 +15,12 @@ class UserAddressController extends Controller
         $this->middleware('auth:sanctum');
     }
 
+
     public function index(): JsonResponse
     {
         return $this->response(
             UserAddressResource::collection(auth()->user()->addresses)
         );
-    }
-
-
-    public function create()
-    {
-        //
     }
 
 
@@ -44,20 +38,18 @@ class UserAddressController extends Controller
     }
 
 
-    public function edit(UserAddress $userAddress)
+    public function update(UpdateUserAddressRequest $request, UserAddress $userAddress): JsonResponse
     {
-        //
+        $userAddress->update($request->toArray());
+
+        return $this->success('shipping address updated', $userAddress);
     }
 
 
-    public function update(UpdateUserAddressRequest $request, UserAddress $userAddress)
+    public function destroy(UserAddress $userAddress): JsonResponse
     {
-        //
-    }
+        auth()->user()->addresses()->find($userAddress->id)->delete();
 
-
-    public function destroy(UserAddress $userAddress)
-    {
-        //
+        return $this->success('shipping address deleted');
     }
 }

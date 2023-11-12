@@ -23,8 +23,10 @@ class CartRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'book_id' => 'required|exists:books,id',
-            'quantity' => 'required|integer|min:1'
+            'books' => 'nullable|array',
+            'book_id' => 'nullable|numeric',
+            'quantity' => 'nullable|numeric',
+            'total' => 'nullable|numeric'
         ];
     }
 }

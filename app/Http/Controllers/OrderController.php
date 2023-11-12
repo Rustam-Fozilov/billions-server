@@ -54,7 +54,7 @@ class OrderController extends Controller
                 $bookResource = new BookResource($bookWithStock);
 
 
-                $sum += $bookResource['currency_prices'][1]['price'];
+                $sum += $bookResource['currency_prices'][1]['price'] * $bookResource['quantity'];
                 $books[] = $bookResource->resolve();
             } else {
                 $bookRequest['we_have'] = $book->stocks()->find($bookRequest['stock_id'])->quantity;
@@ -70,7 +70,7 @@ class OrderController extends Controller
                 'payment_type_id' => $request->payment_type_id,
                 'address' => $address,
                 'books' => $books,
-                'sum' => $sum,
+                'sum' => $sum + 30000,
                 'status_id' => in_array($request['payment_type_id'], [1, 2]) ? 1 : 10,
             ]);
 

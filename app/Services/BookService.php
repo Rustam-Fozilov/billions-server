@@ -13,7 +13,7 @@ class BookService
             ->orWhere('name->ru', 'LIKE', '%' . $query . '%')
             ->orWhere('description->uz', 'LIKE', '%' . $query . '%')
             ->orWhere('description->ru', 'LIKE', '%' . $query . '%')
-            ->get();
+            ->simplePaginate(20);
 
 
         if ($books->isEmpty()) {
@@ -22,7 +22,7 @@ class BookService
                     $q->where('first_name', 'LIKE', '%' . $query . '%')
                         ->orWhere('last_name', 'LIKE', '%' . $query . '%');
                 })
-                ->get();
+                ->simplePaginate(20);
         }
 
 

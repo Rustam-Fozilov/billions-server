@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CartResource extends JsonResource
+class UserReviewResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,8 +18,9 @@ class CartResource extends JsonResource
         return [
             'id' => $this->id,
             'book' => new BookResource($this->book),
-            'total'=> $this->total,
-            'quantity' => $this->quantity
+            'rating' => $this->rating,
+            'body' => $this->body,
+            'created_at' => Carbon::parse($this->created_at)->format('d.m.Y H:i:s'),
         ];
     }
 }
