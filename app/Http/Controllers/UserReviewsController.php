@@ -16,8 +16,12 @@ class UserReviewsController extends Controller
 
     public function index(): JsonResponse
     {
+        UserReviewResource::setWrap('reviews');
+
         return $this->response(
-            UserReviewResource::collection(auth()->user()->reviews)
+            UserReviewResource::collection(
+                auth()->user()->reviews()->orderBy('created_at', 'desc')->simplePaginate(20)
+            )->response()->getData(true)
         );
     }
 }

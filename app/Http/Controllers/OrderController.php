@@ -21,14 +21,20 @@ class OrderController extends Controller
 
     public function index(): JsonResponse
     {
+        OrderResource::setWrap('orders');
+
         if (request()->has('status_id')) {
             return $this->response(
-                OrderResource::collection(auth()->user()->orders()->where('status_id', request('status_id'))->paginate(10))
+                OrderResource::collection(
+                    auth()->user()->orders()->where('status_id', request('status_id'))->orderBy('created_at', 'desc')->simplePaginate(30)
+                )->response()->getData(true)
             );
         }
 
         return $this->response(
-            OrderResource::collection(auth()->user()->orders)
+            OrderResource::collection(
+                auth()->user()->orders()->orderBy('created_at', 'desc')->simplePaginate(30)
+            )->response()->getData(true)
         );
     }
 

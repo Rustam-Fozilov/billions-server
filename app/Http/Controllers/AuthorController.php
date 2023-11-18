@@ -22,8 +22,12 @@ class AuthorController extends Controller
 
     public function index(): JsonResponse
     {
+        AuthorResource::setWrap('authors');
+
         return $this->response(
-            AuthorResource::collection(Author::all())
+            AuthorResource::collection(
+                Author::simplePaginate(30)
+            )->response()->getData(true)
         );
     }
 
@@ -62,6 +66,8 @@ class AuthorController extends Controller
 
     public function search($query): JsonResponse
     {
+        AuthorResource::setWrap('authors');
+
         $authors = $this->authorService->search($query);
 
         if ($authors->isEmpty()) {
@@ -70,7 +76,7 @@ class AuthorController extends Controller
 
         return $this->success(
             'Search results',
-            AuthorResource::collection($authors)
+            AuthorResource::collection($authors)->response()->getData(true)
         );
     }
 }

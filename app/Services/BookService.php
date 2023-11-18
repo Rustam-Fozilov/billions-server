@@ -3,10 +3,11 @@
 namespace App\Services;
 
 use App\Models\Book;
+use Illuminate\Contracts\Pagination\Paginator;
 
 class BookService
 {
-    public function search(string $query)
+    public function search(string $query): Paginator
     {
         $books = Book::query()
             ->where('name->uz', 'LIKE', '%' . $query . '%')

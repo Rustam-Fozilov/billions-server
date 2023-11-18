@@ -9,6 +9,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class UserReviewResource extends JsonResource
 {
     /**
+     * @param string|null $wrap
+     */
+    public static function setWrap(?string $wrap): void
+    {
+        self::$wrap = $wrap;
+    }
+    /**
      * Transform the resource into an array.
      *
      * @return array<string, mixed>

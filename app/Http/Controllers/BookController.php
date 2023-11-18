@@ -6,7 +6,9 @@ use App\Http\Resources\BookResource;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use App\Models\Order;
 use App\Services\BookService;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
@@ -20,10 +22,22 @@ class BookController extends Controller
     }
 
 
-    public function index(Request $request): JsonResponse
+    public function index(Request $request)
     {
+//        $books = array();
+//        $books2 = null;
+//        $order = Order::whereDate('created_at', '=' , date('Y-m-d'))->get('books');
+//        $object = (object) $order;
+//        foreach ($object as $obj) {
+//            $books[] = $obj->books;
+//        }
+//
+//        return $books;
+
         return $this->response(
-            BookResource::collection(Book::paginate($request['limit'] ?? 20))
+            BookResource::collection(
+                Book::orderBy('id', $request['orderByDesc'] ? 'desc' : 'asc')->paginate($request['limit'] ?? 20)
+            )
         );
     }
 
