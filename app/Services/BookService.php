@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Http\Requests\StoreOrderRequest;
+use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Contracts\Pagination\Paginator;
 
@@ -22,7 +24,6 @@ class BookService
             ->orWhere('description->ru', 'LIKE', '%' . $query . '%')
             ->simplePaginate(30);
 
-
         if ($books->isEmpty()) {
             $books = Book::query()
                 ->whereHas('author', function ($q) use ($query) {
@@ -31,7 +32,6 @@ class BookService
                 })
                 ->simplePaginate(30);
         }
-
 
         return $books;
     }
@@ -98,5 +98,31 @@ class BookService
                 ]
             ])
         ]);
+    }
+
+    public function checkForStock(StoreOrderRequest $request, float|int $sum, array $books, array $notFoundBooks): array
+    {
+        foreach ($request->books as $bookRequest) {
+            $book = Book::with('stocks')->findOrFail($bookRequest['book_id']);
+            $book->quantity = $bookRequest['quantity'];
+
+
+            if (
+                /* Product stockda bormi tekshirish */
+                $book->stocks()->find($bookRequest['stock_id']) &&
+                $book->stocks()->find($bookRequest['stock_id'])->quantity >= $bookRequest['quantity']
+            ) {
+                $bookWithStock = $book->withStock($bookRequest['stock_id']);
+                $bookResource = new BookResource($bookWithStock);
+
+
+                $sum += $bookResource['currency_prices'][1]['price'] * $bookResource['quantity'];
+                $books[] = $bookResource->resolve();
+            } else {
+                $bookRequest['we_have'] = $book->stocks()->find($bookRequest['stock_id'])->quantity;
+                $notFoundBooks[] = $bookRequest;
+            }
+        }
+        return array($sum, $books, $notFoundBooks);
     }
 }

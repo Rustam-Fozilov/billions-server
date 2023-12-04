@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\BookResource;
 use App\Http\Resources\OrderResource;
-use App\Models\Book;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
-use App\Models\Stock;
+use App\Services\BookService;
+use App\Services\OrderService;
+use App\Services\StockService;
 use Illuminate\Http\JsonResponse;
 
 class OrderController extends Controller
 {
-    public function __construct()
+    public function __construct(
+        protected OrderService $orderService,
+        protected StockService $stockService,
+        protected BookService $bookService,
+    )
     {
         $this->middleware('auth:sanctum');
     }
@@ -46,56 +50,25 @@ class OrderController extends Controller
         $notFoundBooks = [];
         $address = auth()->user()->addresses()->find($request->address_id);
 
+        /* Stockda product borligiga tekshirish */
+        list($sum, $books, $notFoundBooks) = $this->bookService->checkForStock($request, $sum, $books, $notFoundBooks);
 
-        foreach ($request->books as $bookRequest) {
-            $book = Book::with('stocks')->findOrFail($bookRequest['book_id']);
-            $book->quantity = $bookRequest['quantity'];
-
-
-            if (
-                $book->stocks()->find($bookRequest['stock_id']) &&
-                $book->stocks()->find($bookRequest['stock_id'])->quantity >= $bookRequest['quantity']
-            ) {
-                $bookWithStock = $book->withStock($bookRequest['stock_id']);
-                $bookResource = new BookResource($bookWithStock);
-
-
-                $sum += $bookResource['currency_prices'][1]['price'] * $bookResource['quantity'];
-                $books[] = $bookResource->resolve();
-            } else {
-                $bookRequest['we_have'] = $book->stocks()->find($bookRequest['stock_id'])->quantity;
-                $notFoundBooks[] = $bookRequest;
-            }
-        }
-
-
+        /* Bor bo'lsa buyurtma yaratish */
         if ($notFoundBooks === [] && $books !== [] && $sum !== 0) {
-            $order = auth()->user()->orders()->create([
-                'comment' => $request->comment,
-                'delivery_method_id' => $request->delivery_method_id,
-                'payment_type_id' => $request->payment_type_id,
-                'address' => $address,
-                'books' => $books,
-                'sum' => $sum + 30000,
-                'status_id' => in_array($request['payment_type_id'], [1, 2]) ? 1 : 10,
-            ]);
+            $order = $this->orderService->createOrder($request, $address, $books, $sum);
 
             if ($order) {
-                foreach ($books as $book) {
-                    $stock = Stock::find($book['inventory'][0]['id']);
-                    $stock->quantity -= $book['order_quantity'];
-                    $stock->save();
-                }
+                $this->stockService->removeFromStock($books);
             }
 
             return $this->success('order created', $order);
-
-        } else {
-            return $this->error('some books not found', [
-                'not_found_books' => $notFoundBooks,
-                'found_books' => $books
-            ]);
         }
+
+        /* Yo'q bo'lsa xabar qaytarish */
+        return $this->error('some books not found', [
+            'not_found_books' => $notFoundBooks,
+            'found_books' => $books
+        ]);
     }
 
 
