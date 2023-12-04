@@ -6,34 +6,24 @@ use App\Http\Resources\BookResource;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
-use App\Models\Order;
 use App\Services\BookService;
-use Illuminate\Support\Carbon;
+use App\Services\ValueService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
     public function __construct(
-        protected BookService $bookService
+        protected BookService $bookService,
+        protected ValueService $valueService
     )
     {
+        $this->middleware('admin')->only('store');
     }
 
 
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
-//        $books = array();
-//        $books2 = null;
-//        $order = Order::whereDate('created_at', '=' , date('Y-m-d'))->get('books');
-//        $object = (object) $order;
-//        foreach ($object as $obj) {
-//            $books[] = $obj->books;
-//        }
-//
-//        return $books;
-
         return $this->response(
             BookResource::collection(
                 Book::orderBy('id', $request['orderByDesc'] ? 'desc' : 'asc')->paginate($request['limit'] ?? 20)
@@ -42,9 +32,9 @@ class BookController extends Controller
     }
 
 
-    public function store(StoreBookRequest $request)
+    public function store(StoreBookRequest $request): JsonResponse
     {
-        //
+        return $this->bookService->create($request);
     }
 
 
@@ -77,6 +67,16 @@ class BookController extends Controller
     }
 
 
+    public function newest(Request $request): JsonResponse
+    {
+        $books = Book::orderBy('created_at', 'desc')->limit($request['limit'] ?? 20)->get();
+
+        return $this->response(
+            BookResource::collection($books)
+        );
+    }
+
+
     public function search($query): JsonResponse
     {
         BookResource::setWrap('books');
@@ -90,18 +90,6 @@ class BookController extends Controller
         return $this->success(
             'Search results',
             BookResource::collection($result)->response()->getData(true)
-        );
-    }
-
-
-    public function filter(Request $request)
-    {
-        $books = $this->bookService->filter($request);
-
-        dd($books);
-
-        return $this->response(
-            $books
         );
     }
 }

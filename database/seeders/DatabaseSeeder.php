@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ValueSeeder::class,
             CurrencySeeder::class,
             BookSeeder::class,
+            BestsellerSeeder::class,
             UserSeeder::class,
             DeliveryMethodSeeder::class,
             PaymentTypeSeeder::class,
@@ -28,7 +29,6 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             SettingSeeder::class,
             GuestSettingSeeder::class,
-//            CartSeeder::class,
             ReviewSeeder::class,
         ]);
     }

@@ -19,12 +19,6 @@ class DeliveryMethodController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
-
     public function store(StoreDeliveryMethodRequest $request)
     {
         //
@@ -32,12 +26,6 @@ class DeliveryMethodController extends Controller
 
 
     public function show(DeliveryMethod $deliveryMethod)
-    {
-        //
-    }
-
-
-    public function edit(DeliveryMethod $deliveryMethod)
     {
         //
     }

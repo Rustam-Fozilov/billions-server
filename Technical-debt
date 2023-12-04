@@ -1,2 +1,2 @@
-- change price of product if attribute changes (ex: material)
-- add path url attribute to table: books, categories
+- delete guest_settings table.
+- Refactor codes (move logic to services).

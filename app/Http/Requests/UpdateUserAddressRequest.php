@@ -22,11 +22,11 @@ class UpdateUserAddressRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'region' => 'nullable',
-            'street' => 'nullable',
-            'house' => 'nullable',
-            'address_name' => 'nullable',
-            'additional_info' => 'nullable',
+            'region' => 'nullable|string',
+            'street' => 'nullable|required|string',
+            'house' => 'nullable|required|string',
+            'address_name' => 'nullable|required|string',
+            'additional_info' => 'nullable|string',
         ];
     }
 }

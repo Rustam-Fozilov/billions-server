@@ -20,27 +20,29 @@ class CategorySeeder extends Seeder
             ],
             'path_name' => 'personal-development'
         ]);
-                $category->child_categories()->create([
+        $category->image()->create([
+            'link' => 'personal-development.png'
+        ]);
+                $sub = $category->child_categories()->create([
                     'name' => [
                         'uz' => 'O\'z-o\'ziga ishonch',
                         'ru' => 'Уверенность в себе',
                     ],
                     'path_name' => 'self-confidence'
                 ]);
-                $subCategory = $category->child_categories()->create([
+                $sub->image()->create([
+                    'link' => 'self-confidence.png'
+                ]);
+                $sub = $category->child_categories()->create([
                     'name' => [
                         'uz' => 'Vaqtni boshqarish',
                         'ru' => 'Тайм-менеджмент',
                     ],
                     'path_name' => 'time-management'
                 ]);
-                        $subCategory->child_categories()->create([
-                            'name' => [
-                                'uz' => 'Vaqtni boshqarish subcategory',
-                                'ru' => 'Тайм-менеджмент subcategory',
-                            ],
-                            'path_name' => 'time-management-subcategory'
-                        ]);
+                $sub->image()->create([
+                    'link' => 'time-management.png'
+                ]);
 
 
 
@@ -51,19 +53,28 @@ class CategorySeeder extends Seeder
             ],
             'path_name' => 'psychology'
         ]);
-                $category->child_categories()->create([
+        $category->image()->create([
+            'link' => 'psychology.png'
+        ]);
+                $sub = $category->child_categories()->create([
                     'name' => [
                         'uz' => 'o\'z-o\'zini anglash',
                         'ru' => 'Самопознание',
                     ],
                     'path_name' => 'self-knowledge'
                 ]);
-                $category->child_categories()->create([
+                $sub->image()->create([
+                    'link' => 'self-knowledge.png'
+                ]);
+                $sub = $category->child_categories()->create([
                     'name' => [
                         'uz' => 'Bolalar psixologiyasi',
                         'ru' => 'Детская психология',
                     ],
                     'path_name' => 'child-psychology'
+                ]);
+                $sub->image()->create([
+                    'link' => 'child-psychology.png'
                 ]);
 
 
@@ -75,69 +86,74 @@ class CategorySeeder extends Seeder
             ],
             'path_name' => 'business'
         ]);
-                $category->child_categories()->create([
+        $category->image()->create([
+            'link' => 'business.png'
+        ]);
+                $sub = $category->child_categories()->create([
                     'name' => [
                         'uz' => 'Menejment',
                         'ru' => 'Менеджмент',
                     ],
                     'path_name' => 'management'
                 ]);
-                $category->child_categories()->create([
+                $sub->image()->create([
+                    'link' => 'management.png'
+                ]);
+                $sub = $category->child_categories()->create([
                     'name' => [
                         'uz' => 'Startuplar',
                         'ru' => 'Стартапы',
                     ],
                     'path_name' => 'startups'
                 ]);
+                $sub->image()->create([
+                    'link' => 'startups.png'
+                ]);
 
 
 
-        Category::create([
+        $category = Category::create([
             'name' => [
                 'uz' => 'Moliya',
                 'ru' => 'Финансы'
             ],
             'path_name' => 'finance'
         ]);
+        $category->image()->create([
+            'link' => 'finance.png'
+        ]);
 
-        Category::create([
+        $category = Category::create([
             'name' => [
                 'uz' => 'Bolalar va ota-onalar uchun',
                 'ru' => 'Для детей и родителей'
             ],
             'path_name' => 'for-children-and-parents'
         ]);
+        $category->image()->create([
+            'link' => 'for-children-and-parents.png'
+        ]);
 
-        Category::create([
+        $category = Category::create([
             'name' => [
                 'uz' => 'Marketing va sotuvlar',
                 'ru' => 'Маркетинг и продажи'
             ],
             'path_name' => 'marketing-and-sales'
         ]);
+        $category->image()->create([
+            'link' => 'marketing-and-sales.png'
+        ]);
 
-        Category::create([
+        $category = Category::create([
             'name' => [
                 'uz' => 'Iqtisodiyot va siyosat',
                 'ru' => 'Экономика и политика'
             ],
             'path_name' => 'economics-and-politics'
         ]);
-
-        Category::create([
-            'name' => [
-                'uz' => 'Sog\'lom hayot tarzi',
-                'ru' => 'Здоровый образ жизни'
-            ],
-            'path_name' => 'healthy-lifestyle'
-        ]);
-
-        Category::create([
-            'name' => [
-                'uz' => 'San\'at va ijod',
-                'ru' => 'Искусство и творчество'
-            ],
-            'path_name' => 'art-and-creativity'
+        $category->image()->create([
+            'link' => 'economics-and-politics.png'
         ]);
     }
 }

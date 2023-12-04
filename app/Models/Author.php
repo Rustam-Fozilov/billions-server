@@ -11,9 +11,9 @@ class Author extends Model
 {
     use HasFactory, HasTranslations;
 
-    protected $fillable = ['first_name', 'last_name', 'photo'];
+    protected $fillable = ['first_name', 'last_name', 'description', 'photo'];
 
-    public array $translatable = ['first_name', 'last_name'];
+    public array $translatable = ['first_name', 'last_name', 'description'];
 
     public function books(): HasMany
     {

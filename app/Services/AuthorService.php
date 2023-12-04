@@ -3,11 +3,11 @@
 namespace App\Services;
 
 use App\Models\Author;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\Paginator;
 
 class AuthorService
 {
-    public function search($query)
+    public function search($query): Paginator
     {
         return Author::query()
             ->where('first_name->uz', 'LIKE', '%' . $query . '%')

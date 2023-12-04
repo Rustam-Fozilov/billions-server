@@ -19,7 +19,15 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:3000'],
+    'allowed_origins' => [
+        'http://localhost:3000',
+        'https://blns.uz',
+        'https://www.blns.uz',
+        'https://billions.uz',
+        'https://www.billions.uz',
+        'https://billionsbooks.uz',
+        'https://www.billionsbooks.uz',
+    ],
 
     'allowed_origins_patterns' => [],
 

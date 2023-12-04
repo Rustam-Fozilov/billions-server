@@ -25,6 +25,10 @@ class AuthorFactory extends Factory
                 'uz' => fake()->lastName,
                 'ru' => 'ru ' . fake()->lastName
             ],
+            'description' => [
+                'uz' => fake()->sentence(20),
+                'ru' => 'ru: ' . fake()->sentence(20),
+            ],
             'photo' => fake()->imageUrl
         ];
     }
