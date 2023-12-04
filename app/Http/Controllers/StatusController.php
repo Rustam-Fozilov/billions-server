@@ -14,6 +14,7 @@ class StatusController extends Controller
         $this->middleware('auth:sanctum');
     }
 
+
     public function index(Request $request)
     {
         if ($request->has('for')) {

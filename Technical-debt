@@ -1,2 +1,1 @@
-- delete guest_settings table.
 - Refactor codes (move logic to services).
