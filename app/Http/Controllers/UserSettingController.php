@@ -6,11 +6,14 @@ use App\Http\Resources\UserSettingResource;
 use App\Models\UserSetting;
 use App\Http\Requests\StoreUserSettingRequest;
 use App\Http\Requests\UpdateUserSettingRequest;
+use App\Services\UserSettingService;
 use Illuminate\Http\JsonResponse;
 
 class UserSettingController extends Controller
 {
-    public function __construct()
+    public function __construct(
+        protected UserSettingService $userSettingService
+    )
     {
         $this->middleware('auth:sanctum');
     }
@@ -28,11 +31,7 @@ class UserSettingController extends Controller
             return $this->error('setting already exists');
         }
 
-        $userSetting = auth()->user()->settings()->create([
-            'setting_id' => $request['setting_id'],
-            'value_id' => $request['value_id'] ?? null,
-            'switch' => $request['switch'] ?? null,
-        ]);
+        $userSetting = $this->userSettingService->create($request);
 
         return $this->success('user setting created', $userSetting);
     }

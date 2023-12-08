@@ -14,6 +14,7 @@ class FavoritesController extends Controller
         $this->middleware('auth:sanctum');
     }
 
+
     public function index(Request $request): JsonResponse
     {
         return $this->response(
@@ -21,12 +22,14 @@ class FavoritesController extends Controller
         );
     }
 
+
     public function store(StoreFavoriteRequest $request): JsonResponse
     {
         auth()->user()->favorites()->attach($request->book_id);
 
         return $this->success('Added to favorites');
     }
+
 
     public function destroy($id): JsonResponse
     {

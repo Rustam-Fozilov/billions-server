@@ -61,6 +61,7 @@ class CartController extends Controller
         );
     }
 
+
     public function destroyAll(): JsonResponse
     {
         auth()->user()->booksInCart()->delete();

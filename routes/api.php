@@ -8,7 +8,6 @@ use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DeliveryMethodController;
 use App\Http\Controllers\FavoritesController;
-use App\Http\Controllers\GuestSettingController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentTypeController;
 use App\Http\Controllers\ReviewController;
@@ -47,7 +46,6 @@ Route::apiResources([
     'user-settings' => UserSettingController::class,
     'payment-types' => PaymentTypeController::class,
     'user-addresses' => UserAddressController::class,
-    'guest-settings' => GuestSettingController::class,
     'statuses.orders' => StatusOrderController::class,
     'categories.books' => CategoryBookController::class,
     'delivery-methods' => DeliveryMethodController::class,

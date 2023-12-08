@@ -18,12 +18,14 @@ class Controller extends BaseController
         ]);
     }
 
+
     public function message($message): JsonResponse
     {
         return response()->json([
             'message' => $message
         ]);
     }
+
 
     public function error(string $message, $data = null): JsonResponse
     {

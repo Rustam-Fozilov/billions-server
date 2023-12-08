@@ -14,6 +14,7 @@ class BookReviewController extends Controller
         $this->middleware('auth:sanctum')->except('index');
     }
 
+
     public function index(Book $book): JsonResponse
     {
         return $this->response([
@@ -22,6 +23,7 @@ class BookReviewController extends Controller
             'reviews' => ReviewResource::collection($book->reviews()->simplePaginate(10)),
         ]);
     }
+
 
     public function store(Book $book, StoreReviewRequest $request): JsonResponse
     {

@@ -15,6 +15,7 @@ class ReviewController extends Controller
         $this->middleware('auth:sanctum')->except('index');
     }
 
+
     public function index(): JsonResponse
     {
         return $this->response(

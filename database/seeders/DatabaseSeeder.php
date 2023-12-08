@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Currency;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,7 +27,6 @@ class DatabaseSeeder extends Seeder
             UserAddressSeeder::class,
             StatusSeeder::class,
             SettingSeeder::class,
-            GuestSettingSeeder::class,
             ReviewSeeder::class,
         ]);
     }
