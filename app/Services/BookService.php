@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
@@ -10,7 +11,8 @@ use Illuminate\Contracts\Pagination\Paginator;
 class BookService
 {
     public function __construct(
-        protected ValueService $valueService
+        protected ValueService $valueService,
+        protected Controller $controller,
     )
     {
     }
@@ -50,7 +52,7 @@ class BookService
         $this->create_book_images($request['images'], $book);
         $this->create_book_stocks($book, $request);
 
-        return $this->success('Book created successfully', $book);
+        return $this->controller->success('Book created successfully', $book);
     }
 
     public function create_book_prices($book, $price): void
