@@ -16,7 +16,7 @@ class CurrencySeeder extends Seeder
         Currency::create([
             'name' => [
                 'uz' => 'dollar',
-                'ru' => 'ru dollar'
+                'ru' => 'доллар'
             ],
             'symbol' => '$',
         ]);
@@ -24,14 +24,14 @@ class CurrencySeeder extends Seeder
         Currency::create([
             'name' => [
                 'uz' => 'so\'m',
-                'ru' => 'sum',
+                'ru' => 'сум',
             ],
         ]);
 
         Currency::create([
             'name' => [
-                'uz' => 'rubil',
-                'ru' => 'rubl'
+                'uz' => 'rubl',
+                'ru' => 'рубль'
             ],
             'symbol' => '₽'
         ]);

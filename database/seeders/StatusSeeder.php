@@ -16,7 +16,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'Yangi',
-                'ru' => 'ru Yangi'
+                'ru' => 'Новый'
             ],
             'code' => 'new',
             'for' => 'order',
@@ -25,7 +25,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'Tasdiqlandi',
-                'ru' => 'ru Tasdiqlandi'
+                'ru' => 'Подтверждено'
             ],
             'code' => 'confirmed',
             'for' => 'order',
@@ -34,7 +34,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'Yig\'ilmoqda',
-                'ru' => 'ru Yig\'ilmoqda'
+                'ru' => 'Собирается'
             ],
             'code' => 'processing',
             'for' => 'order',
@@ -43,7 +43,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'Yetkazib berilmoqda',
-                'ru' => 'ru Yetkazib berilmoqda'
+                'ru' => 'Доставляется'
             ],
             'code' => 'shipping',
             'for' => 'order',
@@ -52,7 +52,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'Yetkazib berildi',
-                'ru' => 'ru Yetkazib berildi'
+                'ru' => 'Доставлено'
             ],
             'code' => 'delivered',
             'for' => 'order',
@@ -61,7 +61,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'Tugatildi',
-                'ru' => 'ru Tugatildi'
+                'ru' => 'Завершено'
             ],
             'code' => 'completed',
             'for' => 'order',
@@ -70,7 +70,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'Yopildi',
-                'ru' => 'ru Yopildi'
+                'ru' => 'Закрыто'
             ],
             'code' => 'closed',
             'for' => 'order',
@@ -79,7 +79,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'Bekor qilindi',
-                'ru' => 'ru Bekor qilindi'
+                'ru' => 'Отменено'
             ],
             'code' => 'canceled',
             'for' => 'order',
@@ -88,7 +88,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'Qaytarib berildi',
-                'ru' => 'ru Qaytarib berildi'
+                'ru' => 'Возвращено'
             ],
             'code' => 'refunded',
             'for' => 'order',
@@ -97,7 +97,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'To\'lov kutilyapti',
-                'ru' => 'ru To\'lov kutilyapti'
+                'ru' => 'Ожидание оплаты'
             ],
             'code' => 'waiting_payment',
             'for' => 'order',
@@ -106,7 +106,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'To\'landi',
-                'ru' => 'ru To\'landi'
+                'ru' => 'Оплачено'
             ],
             'code' => 'paid',
             'for' => 'order',
@@ -115,7 +115,7 @@ class StatusSeeder extends Seeder
         Status::create([
             'name' => [
                 'uz' => 'To\'lovda xatolik',
-                'ru' => 'ru To\'lovda xatolik'
+                'ru' => 'Ошибка при оплате'
             ],
             'code' => 'payment_error',
             'for' => 'order',
