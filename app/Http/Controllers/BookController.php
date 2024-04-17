@@ -57,6 +57,7 @@ class BookController extends Controller
         //
     }
 
+
     public function related(Book $book): JsonResponse
     {
         $books = Book::query()->where('category_id', $book->category_id)->limit(20)->get();

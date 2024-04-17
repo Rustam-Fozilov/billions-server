@@ -13,7 +13,13 @@ class Author extends Model
 
     protected $fillable = ['first_name', 'last_name', 'description', 'photo'];
 
-    public array $translatable = ['first_name', 'last_name', 'description'];
+    public array $translatable = [];
+
+    protected $casts = [
+        'first_name' => 'json',
+        'last_name' => 'json',
+        'description' => 'json',
+    ];
 
     public function books(): HasMany
     {

@@ -16,7 +16,7 @@ class CategoryResource extends JsonResource
     {
         $resource = [
             'id' => $this->id,
-            'name' => $this->getTranslations('name'),
+            'name' => $this->name,
             'image' => new ImageResource($this->image),
             'priority' => $this->priority,
             'path_name' => $this->path_name,

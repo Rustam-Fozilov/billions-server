@@ -25,6 +25,8 @@ class StoreBookRequest extends FormRequest
             'price' => 'required|integer',
             'quantity' => 'required|integer',
             'name' => 'required|array',
+            'name.*.uz' => 'required|string',
+            'name.*.ru' => 'required|string',
             'images' => 'required|array',
             'description' => 'required',
             'short_description' => 'nullable',

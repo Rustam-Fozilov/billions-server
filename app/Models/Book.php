@@ -16,14 +16,25 @@ class Book extends Model
     use HasFactory, HasTranslations, SoftDeletes;
 
     protected $fillable = [
+        'name',
         'category_id',
         'author_id',
-        'name',
         'description',
         'short_description'
     ];
 
-    public array $translatable = ['name', 'description', 'short_description'];
+    protected $casts = [
+        'name' => 'json',
+        'short_description' => 'json',
+        'description' => 'json',
+    ];
+
+    public array $translatable = [];
+
+    public function getName(): string
+    {
+        return $this->getTranslations('name')['uz'];
+    }
 
     public function category(): BelongsTo
     {

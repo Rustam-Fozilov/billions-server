@@ -3,10 +3,12 @@
 namespace App\Services;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Http\JsonResponse;
 
 class BookService
 {
@@ -38,7 +40,7 @@ class BookService
         return $books;
     }
 
-    public function create($request)
+    public function create(StoreBookRequest $request): JsonResponse
     {
         $book = Book::create([
             'category_id' => $request['category_id'],
@@ -59,7 +61,7 @@ class BookService
     {
         $book->currency_prices()->create([
             'currency_id' => 1, // dollar
-            'price' => $price / 12000
+            'price' => $price / 12300
         ]);
         $book->currency_prices()->create([
             'currency_id' => 2, // so'm

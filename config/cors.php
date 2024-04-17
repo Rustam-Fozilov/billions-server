@@ -21,6 +21,7 @@ return [
 
     'allowed_origins' => [
         'http://localhost:3000',
+        'http://localhost:3001',
         'https://blns.uz',
         'https://www.blns.uz',
         'https://billions.uz',

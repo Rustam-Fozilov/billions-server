@@ -22,7 +22,11 @@ class Category extends Model
         'path_name',
     ];
 
-    public array $translatable = ['name'];
+    public array $translatable = [];
+
+    protected $casts = [
+        'name' => 'json'
+    ];
 
     public function books(): HasMany
     {

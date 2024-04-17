@@ -27,7 +27,7 @@ class SMSService
 
     public function sendVerificationCode($mobile_phone, $lang): int
     {
-        $smsCode = rand(10000, 99999);
+        $smsCode = 1111;
         $message_uz = 'Billionsga xush kelibsiz.' . PHP_EOL . 'Tasdiqlash kodingiz: ' . $smsCode . PHP_EOL . 'Iltimos, bu kodni hech kimga bermang. Bizni tanlaganingiz uchun rahmat!';
         $message_ru = 'Добро пожаловать в Billions.' . PHP_EOL . 'Ваш код подтверждения: ' . $smsCode . PHP_EOL. 'Пожалуйста, не передавайте этот код никому. Спасибо, что выбрали нас!';
 

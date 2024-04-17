@@ -25,9 +25,9 @@ class AuthorResource extends JsonResource
             'id' => $this->id,
             'pivot' => $this->pivot,
             'photo' => $this->photo,
-            'first_name' => $this->getTranslations('first_name'),
-            'last_name' => $this->getTranslations('last_name'),
-            'description' => $this->getTranslations('description'),
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'description' => $this->description,
             'books' => $this->when($request->withBooks, BookResource::collection($this->books)),
         ];
     }

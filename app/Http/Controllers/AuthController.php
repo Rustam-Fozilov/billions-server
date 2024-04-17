@@ -31,7 +31,8 @@ class AuthController extends Controller
     public function sendSMSCode(LoginRequest $request): JsonResponse
     {
         $user = $this->userService->findOrCreate(phone: $request->phone);
-        $code = $this->smsService->sendVerificationCode($request->phone, $request->lang);
+//        $code = $this->smsService->sendVerificationCode($request->phone, $request->lang);
+        $code = 11111;
         $code_id = $this->verifyCodeService->create($user->id, $code);
 
         return $this->success('Verification code sent successfully', [
