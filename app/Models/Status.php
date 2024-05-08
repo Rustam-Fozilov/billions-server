@@ -13,7 +13,11 @@ class Status extends Model
 
     protected $fillable = ['name', 'code', 'for'];
 
-    public array $translatable = ['name'];
+    public array $translatable = [];
+
+    protected $casts = [
+        'name' => 'json'
+    ];
 
     public function orders(): HasMany
     {

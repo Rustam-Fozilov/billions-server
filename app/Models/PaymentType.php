@@ -14,7 +14,11 @@ class PaymentType extends Model
 
     protected $fillable = ['name'];
 
-    public array $translatable = ['name'];
+    public array $translatable = [];
+
+    protected $casts = [
+        'name' => 'json'
+    ];
 
     public function orders(): HasMany
     {

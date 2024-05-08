@@ -23,7 +23,17 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make([
+                    Forms\Components\TextInput::make('name.uz')->label('Name Uz')->required(),
+                    Forms\Components\TextInput::make('name.ru')->label('Name Ru')->required(),
+                    Forms\Components\TextInput::make('path_name')->label('Slug')->required(),
+                    Forms\Components\TextInput::make('priority')->integer()->placeholder('optional'),
+                    Forms\Components\FileUpload::make('image')
+                        ->disk('public')
+                        ->directory('images/categories')
+                        ->moveFiles()
+                        ->required(),
+                ])->columns(2)
             ]);
     }
 
@@ -32,6 +42,7 @@ class CategoryResource extends Resource
 
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('name.uz'),
                 Tables\Columns\TextColumn::make('created_at'),
             ])

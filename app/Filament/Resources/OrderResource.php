@@ -32,6 +32,11 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')->label('ID'),
+                Tables\Columns\TextColumn::make('user.phone')->label('Phone'),
+                Tables\Columns\TextColumn::make('paymentType.name.uz')->label('Payment type'),
+                Tables\Columns\TextColumn::make('sum')->label('Payment'),
+                Tables\Columns\TextColumn::make('status.name.uz')->label('Status'),
+                Tables\Columns\TextColumn::make('created_at')
             ])
             ->filters([
                 //
