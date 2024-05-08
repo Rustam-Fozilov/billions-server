@@ -54,17 +54,18 @@ class BookResource extends Resource
                         ])->columns(2),
                     ]),
 
+//                dd(Category::all()->pluck('name.uz')->first()),
                 Group::make()
                     ->schema([
                         Section::make([
                             Select::make('category_id')
                                 ->label('Category')
-                                ->options(Category::query()->pluck('name', 'id'))
+                                ->options(Category::all()->pluck('name.uz'))
                                 ->searchable()
                                 ->required(),
                             Select::make('author_id')
                                 ->label('Author')
-                                ->options(Author::query()->pluck('first_name', 'id'))
+                                ->options(Author::all()->pluck('first_name.uz', 'id'))
                                 ->searchable()
                                 ->required(),
                         ])->columns(2),
